@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
             }
-            if (_isGroud && Input.GetKeyDown(KeyCode.Space))
+            if (_isGroud && Input.GetKeyDown(KeyCode.W))
             {
                 _rigi.velocity = new Vector2(_rigi.velocity.x, jumpForce);
                 _rigi.gravityScale = 3f;
