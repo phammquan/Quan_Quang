@@ -23,9 +23,18 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             _rigi.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, _rigi.velocity.y);
+            if (_rigi.velocity.x > 0)
+            {
+                this.transform.localScale = new Vector3(1, 1, 1);
+            }
+            if (_rigi.velocity.x < 0)
+            {
+                this.transform.localScale = new Vector3(-1, 1, 1);
+            }
             if (_isGroud && Input.GetKeyDown(KeyCode.Space))
             {
                 _rigi.velocity = new Vector2(_rigi.velocity.x, jumpForce);
+                _rigi.gravityScale = 3f;
                 _isGroud = false;
             }
         }
@@ -44,4 +53,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             _isGroud = false;
         }
     }
+
+
 }
