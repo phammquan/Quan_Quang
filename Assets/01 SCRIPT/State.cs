@@ -44,24 +44,30 @@ public class State : MonoBehaviour
         if (Input.GetKey(KeyCode.O))
         {
             _attackState = AttackState.Skill_1;
-            return;
+        }
+        else if (Input.GetKey(KeyCode.U))
+        {
+            _attackState = AttackState.Skill_2;
+        }
+        else if (Input.GetKey(KeyCode.I))
+        {
+            _attackState = AttackState.Skill_3;
         }
         else if (Input.GetKey(KeyCode.J))
         {
             _attackState = AttackState.Punch;
-            return;
         }
         else if (Input.GetKey(KeyCode.K))
         {
             _attackState = AttackState.Kick;
-            return;
         }
         else
         {
             _attackState = AttackState.NoAttack;
-            return;
+ 
         }
     }
+
     public enum PlayerState
     {
         Idle,
@@ -74,6 +80,9 @@ public class State : MonoBehaviour
         NoAttack,
         Kick,
         Punch,
-        Skill_1
+        Skill_1,
+        Skill_2,
+        Skill_3
+
     }
 }
