@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using Unity.UI;
+using UnityEngine.UI;
+
 [RequireComponent(typeof(StateManager))]
 
 public class PlayerController : MonoBehaviourPunCallbacks
@@ -11,7 +14,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
   [SerializeField] float jumpForce;
   [SerializeField] bool _isGroud;
   [SerializeField] float hp = 100;
-  [SerializeField] float stamina = 100;
+  [SerializeField] float stamina;
+  [SerializeField] Slider Stamina;
   AnimationController _anim;
   float speedcheck;
 
@@ -22,6 +26,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     _anim = this.transform.GetChild(0).GetComponent<AnimationController>();
     _stateManager = GetComponent<StateManager>();
     speedcheck = speed;
+    stamina = 100;
+    Stamina.value = stamina;
   }
 
   void Update()
@@ -102,12 +108,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
       _stateManager.ChangeState(new Kick(_anim));
     }
-    if (stamina >= 30 && Input.GetKeyDown(KeyCode.U) ||
+    if (Input.GetKeyDown(KeyCode.U) ||
     Input.GetKeyDown(KeyCode.I) ||
     Input.GetKeyDown(KeyCode.O))
     {
-      stamina -= 30;
-      _stateManager.ChangeState(new Skill(_anim));
+      if (stamina >= 30f)
+      {
+        stamina -= 30f;
+        Stamina.value = stamina;
+        _stateManager.ChangeState(new Skill(_anim));
+      }
+
     }
 
   }
@@ -125,6 +136,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
       if (stamina < 100)
       {
         stamina += 0.1f;
+        Stamina.value = stamina;
+
+      }
+      if (stamina >= 100)
+      {
+        _anim._animator.SetBool("Rest", false);
+
+        _anim._animator.SetBool("Rest 2", false);
       }
     }
     if (Input.GetKeyUp(KeyCode.L))
