@@ -346,7 +346,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -534,8 +534,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c7dd90c807a954ab9774a24b3f5163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
-  jumpForce: 15
+  _rigi: {fileID: 0}
+  speed: 1500
+  jumpForce: 20
   _isGroud: 0
   _stateManager: {fileID: 0}
 --- !u!114 &750876496
@@ -611,7 +612,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.395613
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

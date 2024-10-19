@@ -11,8 +11,7 @@ public class Idle_State : IState
   }
   public void Enter()
   {
-    //_AnimController._animator.SetBool("Run", false);
-
+    Debug.Log("Enter Idle");
   }
 
   public void Execute()
@@ -26,55 +25,15 @@ public class Idle_State : IState
   }
 
 }
-public class Attack_State : IState
-{
-  AnimationController _AnimController;
-  public Attack_State(AnimationController AnimController)
-  {
-    this._AnimController = AnimController;
-  }
-  public void Enter()
-  {
-    if (Input.GetKeyDown(KeyCode.K))
-    {
-      _AnimController._animator.SetTrigger("Kick");
-    }
-    if (Input.GetKeyDown(KeyCode.J))
-    {
-      _AnimController._animator.SetTrigger("Punch");
-    }
-    if (Input.GetKeyDown(KeyCode.U))
-    {
-      _AnimController._animator.SetTrigger("Skill");
-      _AnimController._animator.SetFloat("Attack", 0f);
-    }
-    if (Input.GetKeyDown(KeyCode.I))
-    {
-      _AnimController._animator.SetTrigger("Skill");
-      _AnimController._animator.SetFloat("Attack", 0.5f);
-    }
-    if (Input.GetKeyDown(KeyCode.O))
-    {
-      _AnimController._animator.SetTrigger("Skill");
-      _AnimController._animator.SetFloat("Attack", 1f);
-    }
-  }
-
-  public void Execute()
-  {
-
-  }
-
-  public void Exit()
-  {
-  }
-}
 public class Move_State : IState
 {
   AnimationController _AnimController;
+
+
   public Move_State(AnimationController AnimController)
   {
     this._AnimController = AnimController;
+
   }
   public void Enter()
   {
@@ -90,6 +49,7 @@ public class Move_State : IState
     {
       _AnimController._animator.SetBool("Rest", true);
     }
+
   }
 
   public void Execute()
@@ -104,8 +64,142 @@ public class Move_State : IState
   {
     _AnimController._animator.SetBool("Run", false);
     _AnimController._animator.SetBool("Rest", false);
+  }
 
+}
+
+public class Run_State : IState
+{
+  AnimationController _AnimController;
+  public Run_State(AnimationController AnimController)
+  {
+    this._AnimController = AnimController;
+
+  }
+  public void Enter()
+  {
+    _AnimController._animator.SetBool("Run", true);
+
+  }
+
+  public void Execute()
+  {
 
 
   }
+
+  public void Exit()
+  {
+    _AnimController._animator.SetBool("Run", false);
+  }
 }
+
+public class Jump_State : IState
+{
+  AnimationController _AnimController;
+  public Jump_State(AnimationController AnimController)
+  {
+    this._AnimController = AnimController;
+
+  }
+  public void Enter()
+  {
+    _AnimController._animator.SetBool("Jump", true);
+  }
+
+  public void Execute()
+  {
+
+  }
+
+  public void Exit()
+  {
+    _AnimController._animator.SetBool("Jump", false);
+
+  }
+}
+public class Punch : IState
+{
+  AnimationController _AnimController;
+  public Punch(AnimationController AnimController)
+  {
+    this._AnimController = AnimController;
+  }
+  public void Enter()
+  {
+    _AnimController._animator.SetTrigger("Punch");
+  }
+
+  public void Execute()
+  {
+
+  }
+
+  public void Exit()
+  {
+    Debug.Log("Exit Punch");
+  }
+}
+
+public class Kick : IState
+{
+  AnimationController _AnimController;
+  public Kick(AnimationController AnimController)
+  {
+    this._AnimController = AnimController;
+  }
+  public void Enter()
+  {
+    _AnimController._animator.SetTrigger("Kick");
+  }
+
+  public void Execute()
+  {
+
+  }
+
+  public void Exit()
+  {
+    Debug.Log("Exit Kick");
+  }
+}
+public class Skill : IState
+{
+  AnimationController _AnimController;
+  public Skill(AnimationController AnimController)
+  {
+    this._AnimController = AnimController;
+  }
+  public void Enter()
+  {
+    Debug.Log("Enter Skill");
+    _AnimController._animator.SetTrigger("Skill");
+  }
+
+  public void Execute()
+  {
+    if (Input.GetKeyDown(KeyCode.U))
+    {
+      _AnimController._animator.SetTrigger("Skill");
+      _AnimController._animator.SetFloat("Attack", 0f);
+    }
+    if (Input.GetKeyDown(KeyCode.I))
+    {
+      _AnimController._animator.SetTrigger("Skill");
+      _AnimController._animator.SetFloat("Attack", 0.5f);
+    }
+    if (Input.GetKeyDown(KeyCode.O))
+    {
+      _AnimController._animator.SetTrigger("Skill");
+      _AnimController._animator.SetFloat("Attack", 1f);
+    }
+
+  }
+
+  public void Exit()
+  {
+    Debug.Log("Exit Skill");
+  }
+}
+
+
