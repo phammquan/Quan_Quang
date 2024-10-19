@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 254033158}
   - component: {fileID: 254033160}
   - component: {fileID: 254033159}
+  - component: {fileID: 254033161}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -229,6 +230,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &254033161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254033157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd39bedbfa2bfe64c9e53901a9855f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 254033159}
 --- !u!1 &669684722
 GameObject:
   m_ObjectHideFlags: 0

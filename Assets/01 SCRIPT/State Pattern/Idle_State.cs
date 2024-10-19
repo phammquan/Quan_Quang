@@ -35,11 +35,6 @@ public class Attack_State : IState
   }
   public void Enter()
   {
-
-  }
-
-  public void Execute()
-  {
     if (Input.GetKeyDown(KeyCode.K))
     {
       _AnimController._animator.SetTrigger("Kick");
@@ -65,6 +60,11 @@ public class Attack_State : IState
     }
   }
 
+  public void Execute()
+  {
+
+  }
+
   public void Exit()
   {
   }
@@ -78,11 +78,6 @@ public class Move_State : IState
   }
   public void Enter()
   {
-
-  }
-
-  public void Execute()
-  {
     if (Input.GetKeyDown(KeyCode.W))
     {
       _AnimController._animator.SetTrigger("Jump");
@@ -95,6 +90,11 @@ public class Move_State : IState
     {
       _AnimController._animator.SetBool("Rest", true);
     }
+  }
+
+  public void Execute()
+  {
+
 
 
 
