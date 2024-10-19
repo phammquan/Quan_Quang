@@ -6,7 +6,7 @@ using AttackAnimation = State.AttackState;
 
 public class AnimationController : MonoBehaviour
 {
-  Animator _animator;
+  public Animator _animator;
   void Start()
   {
     _animator = GetComponent<Animator>();

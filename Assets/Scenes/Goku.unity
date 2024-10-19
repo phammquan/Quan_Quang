@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 254033158}
   - component: {fileID: 254033160}
   - component: {fileID: 254033159}
-  - component: {fileID: 254033161}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -230,18 +229,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &254033161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254033157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd39bedbfa2bfe64c9e53901a9855f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &669684722
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,10 +369,10 @@ GameObject:
   m_Component:
   - component: {fileID: 750876487}
   - component: {fileID: 750876489}
-  - component: {fileID: 750876491}
   - component: {fileID: 750876493}
   - component: {fileID: 750876492}
   - component: {fileID: 750876494}
+  - component: {fileID: 750876496}
   - component: {fileID: 750876495}
   m_Layer: 0
   m_Name: Goku
@@ -437,21 +424,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &750876491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750876485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c7dd90c807a954ab9774a24b3f5163, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1000
-  jumpForce: 15
-  _isGroud: 0
 --- !u!114 &750876492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,11 +517,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 750876485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae0c608a14c9fb41b2f2e38f0a09881, type: 3}
+  m_Script: {fileID: 11500000, guid: f3c7dd90c807a954ab9774a24b3f5163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerState: 0
-  _attackState: 0
+  speed: 1000
+  jumpForce: 15
+  _isGroud: 0
+  _stateManager: {fileID: 0}
+--- !u!114 &750876496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750876485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edfffcaf00ae4841bd42dec9f83497e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1247444780
 GameObject:
   m_ObjectHideFlags: 0
