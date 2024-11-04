@@ -35,13 +35,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
   void Update()
   {
+    move();
     if (photonView.IsMine)
     {
-      move();
-      Attack();
-      Rest_Stamina();
+      if (_rigi.velocity.x > 0)
+      {
+        this.transform.localScale = new Vector3(1, 1, 1);
+      }
+      if (_rigi.velocity.x < 0)
+      {
+        this.transform.localScale = new Vector3(-1, 1, 1);
+      }
     }
-
+    Attack();
+    Rest_Stamina();
   }
   public void move()
   {
@@ -66,14 +73,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
       }
 
 
-      if (_rigi.velocity.x > 0)
-      {
-        this.transform.localScale = new Vector3(1, 1, 1);
-      }
-      if (_rigi.velocity.x < 0)
-      {
-        this.transform.localScale = new Vector3(-1, 1, 1);
-      }
+
       if (_isGroud)
       {
         if (Input.GetKeyDown(KeyCode.W))
@@ -106,44 +106,48 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
   void Attack()
   {
-    if (Input.GetKeyDown(KeyCode.J))
+    if (photonView.IsMine)
     {
-      _stateManager.ChangeState(new Punch(_anim, this));
-    }
-    if (Input.GetKeyDown(KeyCode.K))
-    {
-      _stateManager.ChangeState(new Kick(_anim, this));
-
-    }
-    if (Input.GetKeyDown(KeyCode.U))
-    {
-      if (stamina >= 30f)
+      if (Input.GetKeyDown(KeyCode.J))
       {
-        stamina -= 10f;
-        Stamina.value = stamina;
-        _stateManager.ChangeState(new Skill(_anim, this));
+        _stateManager.ChangeState(new Punch(_anim, this));
+      }
+      if (Input.GetKeyDown(KeyCode.K))
+      {
+        _stateManager.ChangeState(new Kick(_anim, this));
 
       }
-    }
-    if (Input.GetKeyDown(KeyCode.I))
-    {
-      if (stamina >= 30f)
+      if (Input.GetKeyDown(KeyCode.U))
       {
-        stamina -= 20f;
-        Stamina.value = stamina;
-        _stateManager.ChangeState(new Skill(_anim, this));
+        if (stamina >= 30f)
+        {
+          stamina -= 10f;
+          Stamina.value = stamina;
+          _stateManager.ChangeState(new Skill(_anim, this));
 
+        }
       }
-    }
-    if (Input.GetKeyDown(KeyCode.O))
-    {
-      if (stamina >= 30f)
+      if (Input.GetKeyDown(KeyCode.I))
       {
-        stamina -= 30f;
-        Stamina.value = stamina;
-        _stateManager.ChangeState(new Skill(_anim, this));
+        if (stamina >= 30f)
+        {
+          stamina -= 20f;
+          Stamina.value = stamina;
+          _stateManager.ChangeState(new Skill(_anim, this));
+
+        }
+      }
+      if (Input.GetKeyDown(KeyCode.O))
+      {
+        if (stamina >= 30f)
+        {
+          stamina -= 30f;
+          Stamina.value = stamina;
+          _stateManager.ChangeState(new Skill(_anim, this));
+        }
       }
     }
+
   }
   bool check = false;
   void Rest_Stamina()

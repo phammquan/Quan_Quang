@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
 
-public class StateManager : MonoBehaviour
+public class StateManager : MonoBehaviourPunCallbacks
 {
   [SerializeField] IState _currentState;
 
@@ -20,16 +21,24 @@ public class StateManager : MonoBehaviour
     _currentState = State;
     if (_currentState != null)
     {
-      _currentState.Enter();
+      if (photonView.IsMine)
+      {
+        _currentState.Enter();
+
+      }
 
     }
 
   }
   void Update()
   {
-    if (_currentState != null)
+    if (photonView.IsMine)
     {
-      _currentState.Execute();
+      if (_currentState != null)
+      {
+        _currentState.Execute();
+      }
     }
+
   }
 }
