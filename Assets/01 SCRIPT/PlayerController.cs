@@ -13,9 +13,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
   [SerializeField] float speed;
   [SerializeField] float jumpForce;
   [SerializeField] bool _isGroud;
-  [SerializeField] float hp = 100;
+  [SerializeField] float hp;
   [SerializeField] float stamina;
   [SerializeField] Slider Stamina;
+  [SerializeField] Slider HP;
   AnimationController _anim;
   float speedcheck;
 
@@ -27,14 +28,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
     _stateManager = GetComponent<StateManager>();
     speedcheck = speed;
     stamina = 100;
+    hp = 100;
     Stamina.value = stamina;
+    HP.value = hp;
   }
 
   void Update()
   {
-    move();
-    Attack();
-    Rest_Stamina();
+    if (photonView.IsMine)
+    {
+      move();
+      Attack();
+      Rest_Stamina();
+    }
+
   }
   public void move()
   {
@@ -99,34 +106,50 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
   void Attack()
   {
-
     if (Input.GetKeyDown(KeyCode.J))
     {
-      _stateManager.ChangeState(new Punch(_anim));
+      _stateManager.ChangeState(new Punch(_anim, this));
     }
     if (Input.GetKeyDown(KeyCode.K))
     {
-      _stateManager.ChangeState(new Kick(_anim));
+      _stateManager.ChangeState(new Kick(_anim, this));
+
     }
-    if (Input.GetKeyDown(KeyCode.U) ||
-    Input.GetKeyDown(KeyCode.I) ||
-    Input.GetKeyDown(KeyCode.O))
+    if (Input.GetKeyDown(KeyCode.U))
+    {
+      if (stamina >= 30f)
+      {
+        stamina -= 10f;
+        Stamina.value = stamina;
+        _stateManager.ChangeState(new Skill(_anim, this));
+
+      }
+    }
+    if (Input.GetKeyDown(KeyCode.I))
+    {
+      if (stamina >= 30f)
+      {
+        stamina -= 20f;
+        Stamina.value = stamina;
+        _stateManager.ChangeState(new Skill(_anim, this));
+
+      }
+    }
+    if (Input.GetKeyDown(KeyCode.O))
     {
       if (stamina >= 30f)
       {
         stamina -= 30f;
         Stamina.value = stamina;
-        _stateManager.ChangeState(new Skill(_anim));
+        _stateManager.ChangeState(new Skill(_anim, this));
       }
-
     }
-
   }
   bool check = false;
   void Rest_Stamina()
   {
 
-    if (Input.GetKey(KeyCode.L))
+    if (Input.GetKey(KeyCode.L) && _isGroud)
     {
       if (!check)
       {

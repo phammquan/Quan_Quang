@@ -121,9 +121,11 @@ public class Jump_State : IState
 public class Punch : IState
 {
   AnimationController _AnimController;
-  public Punch(AnimationController AnimController)
+  PlayerController _player;
+  public Punch(AnimationController AnimController, PlayerController player)
   {
     this._AnimController = AnimController;
+    this._player = player;
   }
   public void Enter()
   {
@@ -144,9 +146,11 @@ public class Punch : IState
 public class Kick : IState
 {
   AnimationController _AnimController;
-  public Kick(AnimationController AnimController)
+  PlayerController _player;
+  public Kick(AnimationController AnimController, PlayerController player)
   {
     this._AnimController = AnimController;
+    this._player = player;
   }
   public void Enter()
   {
@@ -166,9 +170,11 @@ public class Kick : IState
 public class Skill : IState
 {
   AnimationController _AnimController;
-  public Skill(AnimationController AnimController)
+  PlayerController _player;
+  public Skill(AnimationController AnimController, PlayerController player)
   {
     this._AnimController = AnimController;
+    this._player = player;
   }
   public void Enter()
   {
@@ -199,6 +205,7 @@ public class Skill : IState
   public void Exit()
   {
     Debug.Log("Exit Skill");
+
   }
 }
 
