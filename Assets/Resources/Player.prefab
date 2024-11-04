@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6312366853658559002}
   - component: {fileID: 3840873024326174033}
   - component: {fileID: -2775211514472477198}
+  - component: {fileID: 301478624966993815}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -128,9 +129,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c7dd90c807a954ab9774a24b3f5163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigi: {fileID: 0}
   speed: 200
   jumpForce: 10
   _isGroud: 0
+  hp: 0
+  stamina: 0
+  Stamina: {fileID: 0}
+  HP: {fileID: 0}
+  _stateManager: {fileID: 0}
 --- !u!70 &6312366853658559002
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,3 +212,15 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &301478624966993815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043568806509490697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edfffcaf00ae4841bd42dec9f83497e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
